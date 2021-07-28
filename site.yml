@@ -1,0 +1,8 @@
+---
+# This playbook deploys a simple standalone apache server.
+
+- hosts: windows
+  become: yes
+  roles:
+   - apache
+  
