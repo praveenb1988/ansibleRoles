@@ -1,14 +1,19 @@
 # tasks file for apache
---- 
-- 
-  name: "Install httpd Package"
-  win_chocolatey: "name=httpd state=latest"
-- 
-  name: "Copy httpd configuration file"
-  template: "src=httpd.conf.j2 dest=/etc/httpd/conf/httpd.conf"
-- 
-  win_copy: "src=index.html dest=/var/www/html"
-  name: "Copy index.html file"
+---
+- name: Installing Apache MSI 
+  hosts: windows 
+ 
+  tasks:
+    - name: Download the Apache installer
+      win_get_url:
+        url: https://archive.apache.org/dist/httpd/binaries/win32/httpd-2.2.25-win32-x86-no_ssl.msi
+        dest: C:\ansible_examples\httpd-2.2.25-win32-x86-no_ssl.msi
+
+    - name: Install MSI
+      win_package: 
+        path: C:\ansible_examples\httpd-2.2.25-win32-x86-no_ssl.msi
+        state: present
+  
   notify: 
     - "restart apache"
 
