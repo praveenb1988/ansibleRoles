@@ -1,0 +1,13 @@
+---
+# tasks file for vscode
+-
+  name: "Install VS Code"
+
+  include_tasks: install_chocolatey_dependencies_packages.yml
+-
+  name: "Install VS Code"
+  win_chocolatey:
+    name:
+      - vscode.install
+    state: present
+
