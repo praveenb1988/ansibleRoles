@@ -23,7 +23,7 @@
       state: started
   - name: Add remote "Administrator" user to "docker-users" group
     win_shell: net localgroup docker-users Administrator /add
-    when: ResourceExists  == false
+   # when: ResourceExists  == false
     ignore_errors: yes
 
 
