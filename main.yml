@@ -1,0 +1,4 @@
+- hosts: windows
+  roles:
+  - vscode
+  - win_Docker
