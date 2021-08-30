@@ -1,0 +1,18 @@
+---
+#  tasks file for win_Docker
+  - name: Check the minimum Windows build number
+    include_tasks: check-build-number.yml
+    tags: check
+
+  - name: Install Windows Containers and Hyper-V Windows Features (if not already present)
+    include_tasks: install-windows-container-features.yml
+    tags: dockerinstall
+
+  - name: Install Docker on Windows (always the newest version) and pull needed base images
+    include_tasks: install-docker.yml
+    tags: dockerinstall
+    ## Commented Docker Compose Installation
+    # - name: Install Docker Compose(also always the newest version)
+    # include_tasks: install-docker-compse.yml
+    #tags: dockercomposeinstall
+
